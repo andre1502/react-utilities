@@ -1,5 +1,7 @@
 # react-utilities
 
+[![npm version](https://badge.fury.io/js/@andre1502%2Freact-utilities.svg)](https://badge.fury.io/js/@andre1502%2Freact-utilities)
+
 Library to combine common functions
 
 ## Installation
@@ -189,7 +191,9 @@ Add sentry file in root project with this code
 ```js
 const { releaseSentrySourceMap } = require('@andre1502/react-utilities/cli');
 // OR
-const { releaseSentrySourceMap } = require('@andre1502/react-utilities/sentry-cli');
+const {
+  releaseSentrySourceMap,
+} = require('@andre1502/react-utilities/sentry-cli');
 
 releaseSentrySourceMap({
   env: '',
