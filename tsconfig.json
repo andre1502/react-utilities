@@ -1,0 +1,46 @@
+{
+  "compilerOptions": {
+    "target": "ESNext", // Specifies the JavaScript version to target when transpiling code.
+    "useDefineForClassFields": true, // Enables the use of 'define' for class fields.
+    "lib": ["ESNext", "DOM", "DOM.Iterable"], // Specifies the libraries available for the code.
+    "module": "ESNext", // Defines the module system to use for code generation.
+    "skipLibCheck": true, // Skips type checking of declaration files.
+
+    /* Bundler mode */
+    "moduleResolution": "Bundler", // Specifies how modules are resolved when bundling.
+    "forceConsistentCasingInFileNames": true,
+    "emitDeclarationOnly": true,
+    "allowImportingTsExtensions": true, // Allows importing TypeScript files with extensions.
+    "allowSyntheticDefaultImports": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "resolveJsonModule": true, // Enables importing JSON modules.
+    "isolatedModules": true, // Ensures each file is treated as a separate module.
+    "esModuleInterop": true,
+    "downlevelIteration": true,
+    "jsx": "react-jsx", // Configures JSX support for React.
+    "allowJs": true,
+    "checkJs": true,
+    "incremental": true,
+    "sourceMap": true,
+
+    /* Linting */
+    "strict": true, // Enables strict type checking.
+    "noUnusedLocals": true, // Flags unused local variables.
+    "noUnusedParameters": true, // Flags unused function parameters.
+    "noFallthroughCasesInSwitch": true, // Requires handling all cases in a switch statement.
+    "declaration": true, // Generates declaration files for TypeScript.
+    "declarationDir": "./dist",
+    "rootDir": "src"
+    // "outDir": "./dist"
+  },
+  "include": ["src"], // Specifies the directory to include when searching for TypeScript files.
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build",
+    "src/**/__docs__",
+    "src/**/__test__"
+  ]
+}

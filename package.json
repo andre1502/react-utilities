@@ -1,0 +1,139 @@
+{
+  "name": "@andre1502/react-utilities",
+  "version": "0.9.0",
+  "description": "module to combine common functions",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andre1502/react-utilities"
+  },
+  "license": "MIT",
+  "author": "andre1502",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    },
+    "./fmt": {
+      "types": "./dist/index-fmt.d.ts",
+      "require": "./dist/index-fmt.cjs",
+      "import": "./dist/index-fmt.mjs"
+    },
+    "./react-native": {
+      "types": "./dist/index-rn.d.ts",
+      "require": "./dist/index-rn.cjs",
+      "import": "./dist/index-rn.mjs"
+    },
+    "./cli": {
+      "types": "./dist/index-cli.d.ts",
+      "require": "./dist/index-cli.cjs",
+      "import": "./dist/index-cli.mjs"
+    },
+    "./format": {
+      "types": "./dist/format.d.ts",
+      "require": "./dist/format.cjs",
+      "import": "./dist/format.mjs"
+    },
+    "./sentry": {
+      "types": "./dist/sentry.d.ts",
+      "require": "./dist/sentry.cjs",
+      "import": "./dist/sentry.mjs"
+    },
+    "./sentry-rn": {
+      "types": "./dist/sentry-rn.d.ts",
+      "require": "./dist/sentry-rn.cjs",
+      "import": "./dist/sentry-rn.mjs"
+    },
+    "./sentry-cli": {
+      "types": "./dist/sentry-cli.d.ts",
+      "require": "./dist/sentry-cli.cjs",
+      "import": "./dist/sentry-cli.mjs"
+    },
+    "./config-cli": {
+      "types": "./dist/config-cli.d.ts",
+      "require": "./dist/config-cli.cjs",
+      "import": "./dist/config-cli.mjs"
+    }
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "react-native": "dist/index-rn.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "src",
+    "dist"
+  ],
+  "scripts": {
+    "prebuild": "rm -rf ./tsconfig.tsbuildinfo && rm -rf ./.rollup.cache && rm -rf ./dist",
+    "build": "yarn prebuild && yarn build:esm && yarn build:cjs && yarn build:bundles && yarn declarations",
+    "build:bundles": "cross-env BABEL_ENV=esmBundled node --max-old-space-size=8192 ./node_modules/rollup/dist/bin/rollup --config",
+    "build:cjs": "cross-env BABEL_ENV=cjs babel src --extensions '.ts' --out-dir 'dist' --source-maps",
+    "build:esm": "cross-env BABEL_ENV=esmUnbundled babel src --extensions '.ts' --out-dir 'dist' --source-maps",
+    "declarations": "tsc -p tsconfig.json",
+    "format": "prettier --write --parser typescript '**/*.{ts,tsx}'",
+    "lint": "eslint . --ext .ts,.tsx --ignore-path .gitignore --fix",
+    "prepublishOnly": "yarn build",
+    "test": "echo \"Warn: no test specified, ignore it\" && exit 0"
+  },
+  "dependencies": {
+    "@formatjs/intl-datetimeformat": "^6.12.5",
+    "@formatjs/intl-displaynames": "^6.6.8",
+    "@formatjs/intl-getcanonicallocales": "^2.3.0",
+    "@formatjs/intl-listformat": "^7.5.7",
+    "@formatjs/intl-locale": "^4.0.0",
+    "@formatjs/intl-numberformat": "^8.10.3",
+    "@formatjs/intl-pluralrules": "^5.2.14",
+    "@formatjs/intl-relativetimeformat": "^11.2.14",
+    "@sentry/react-native": "^5.26.0",
+    "@types/lodash": "^4.17.7",
+    "google-auth-library": "^9.11.0",
+    "googleapis": "^140.0.1",
+    "lodash": "^4.17.21",
+    "sitemap": "^8.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.24.8",
+    "@babel/core": "^7.24.9",
+    "@babel/preset-env": "^7.24.8",
+    "@babel/preset-react": "^7.24.7",
+    "@babel/preset-typescript": "^7.24.7",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/node": "^20.14.11",
+    "@types/react": "^18.3.3",
+    "@typescript-eslint/eslint-plugin": "^7.16.1",
+    "@typescript-eslint/parser": "^7.16.1",
+    "cross-env": "^7.0.3",
+    "eslint": "^9.7.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-react": "^7.34.4",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-storybook": "^0.8.0",
+    "prettier": "^3.3.3",
+    "prettier-plugin-organize-imports": "^4.0.0",
+    "prettier-plugin-packagejson": "^2.5.1",
+    "rollup": "^4.19.1",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "tslib": "^2.6.3",
+    "typescript": "^5.5.3",
+    "yarn-upgrade-all": "^0.7.2"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-dom": "*",
+    "react-native": "*",
+    "tslib": "*"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.13.2"
+  },
+  "packageManager": "yarn@4.3.1",
+  "publishConfig": {
+    "@andre1502:registry": "https://registry.npmjs.org/"
+  }
+}
