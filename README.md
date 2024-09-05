@@ -52,9 +52,9 @@ fetchLocales(optionLocales);
 Config file only support export as js file, since you need to combine it with transform function.
 
 ```js
-const { fetchConfig } = require('@andre1502/@andre1502/react-utilities/cli');
+const { fetchConfig } = require('@andre1502/react-utilities/cli');
 // OR
-const { fetchConfig } = require('@andre1502/@andre1502/react-utilities/config-cli');
+const { fetchConfig } = require('@andre1502/react-utilities/config-cli');
 
 https://docs.google.com/spreadsheets/d/<google-sheet-id>/edit
 const optionConfig = {
