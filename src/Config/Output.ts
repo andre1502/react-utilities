@@ -1,4 +1,4 @@
-import { writeFile } from 'fs';
+import { existsSync, mkdirSync, writeFile } from 'fs';
 import { OutputOptions } from '../interfaces/Config/OutputOptions';
 
 /**
@@ -17,13 +17,22 @@ const outputToFile = (content: string, options: OutputOptions): void => {
 
   const filePath = `${options.folder}/${filename}`;
 
-  writeFile(filePath, content, 'utf8', function (err) {
-    if (err) {
-      throw err;
-    }
+  if (!existsSync(options.folder)) {
+    mkdirSync(options.folder, { recursive: true });
+  }
 
-    console.log(filePath, content);
-  });
+  writeFile(
+    filePath,
+    content,
+    { encoding: 'utf-8', flag: 'w' },
+    function (err) {
+      if (err) {
+        throw err;
+      }
+
+      console.log(filePath, content);
+    },
+  );
 };
 
 export { outputToFile };

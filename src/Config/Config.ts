@@ -102,7 +102,24 @@ const exportConfig = (data: OutputMap, options: OutputOptions): void => {
     params: data,
   };
 
-  const content = `module.exports = ${JSON.stringify(config, null, 2)}`;
+  let content = '';
+
+  switch (options.exportAs) {
+    case 'ts':
+      content = 'export default ' + JSON.stringify(config, null, 2);
+      options.filename = `${options.filename}.ts`;
+      break;
+    case 'json':
+      content = JSON.stringify(config, null, 2);
+      options.filename = `${options.filename}.json`;
+      break;
+    case 'js':
+      content = `module.exports = ${JSON.stringify(config, null, 2)}`;
+      options.filename = `${options.filename}.js`;
+      break;
+    default:
+      throw new Error(`exportAs ${options.exportAs} not supported.`);
+  }
 
   outputToFile(content, options);
 };

@@ -63,8 +63,9 @@ const optionConfig = {
   formatAs: 'config',
   output: {
     folder: '.', // config folder location
-    filename: 'versionConfig.js', // config filename
+    filename: 'versionConfig', // config filename
     isFilenameLowercase: false, // set if filename need to be lowercase
+    exportAs: 'json', // export config as 'ts' | 'json' | 'js'
   },
 };
 
@@ -118,8 +119,9 @@ const optionConfig = {
   formatAs: 'config',
   output: {
     folder: '.', // config folder location
-    filename: 'versionConfig.js', // config filename
+    filename: 'versionConfig', // config filename
     isFilenameLowercase: false, // set if filename need to be lowercase
+    exportAs: 'json', // export locales as 'ts' | 'json' | 'js'
   },
 };
 
