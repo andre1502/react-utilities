@@ -32,7 +32,7 @@ const { fetchLocales } = require('@andre1502/react-utilities/cli');
 // OR
 const { fetchLocales } = require('@andre1502/react-utilities/config-cli');
 
-https://docs.google.com/spreadsheets/d/<google-sheet-id>/edit
+// https://docs.google.com/spreadsheets/d/<google-sheet-id>/edit
 const optionLocales = {
   spreadsheetId: '', // Google Sheet Id
   spreadsheetTab: '', // Google Sheet Tab for locales
@@ -56,7 +56,7 @@ const { fetchConfig } = require('@andre1502/react-utilities/cli');
 // OR
 const { fetchConfig } = require('@andre1502/react-utilities/config-cli');
 
-https://docs.google.com/spreadsheets/d/<google-sheet-id>/edit
+// https://docs.google.com/spreadsheets/d/<google-sheet-id>/edit
 const optionConfig = {
   spreadsheetId: '', // Google Sheet Id
   spreadsheetTab: '', // Google Sheet Tab for config;
@@ -97,10 +97,10 @@ const { fetchAll } = require('@andre1502/react-utilities/cli');
 // OR
 const { fetchAll } = require('@andre1502/react-utilities/config-cli');
 
-https://docs.google.com/spreadsheets/d/<google-sheet-id>/edit
+// https://docs.google.com/spreadsheets/d/<google-sheet-id>/edit
 const spreadsheetId = ''; // Google Sheet Id
 const spreadsheetLocalesTab = ''; // Google Sheet Tab for locales
-const spreadsheetConfigTab = '' // Google Sheet Tab for config;
+const spreadsheetConfigTab = ''; // Google Sheet Tab for config;
 
 const optionLocales = {
   spreadsheetId: spreadsheetId,
