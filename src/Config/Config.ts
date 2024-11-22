@@ -1,4 +1,5 @@
 import * as lodash from 'lodash';
+import { EnvironmentEnum } from '../enums/EnvironmentEnum';
 import { OutputMap } from '../interfaces/Config/OutputMap';
 import { OutputOptions } from '../interfaces/Config/OutputOptions';
 import { outputToFile } from './Output';
@@ -137,17 +138,17 @@ const envMap = (env: string): string => {
     case 'dev':
     case 'develop':
     case 'development':
-      result = 'dev';
+      result = EnvironmentEnum.DEV;
       break;
     case 'stg':
     case 'stag':
     case 'staging':
-      result = 'staging';
+      result = EnvironmentEnum.STAGING;
       break;
     case 'prd':
     case 'prod':
     case 'production':
-      result = 'production';
+      result = EnvironmentEnum.PRODUCTION;
       break;
     default:
       throw new Error(`env ${env} not supported.`);

@@ -3,6 +3,7 @@ import { JSONClient } from 'google-auth-library/build/src/auth/googleauth';
 import { exportConfig, processConfig } from './Config/Config';
 import { authorizeServiceAccount, fetchGoogleSheet } from './Config/GoogleAuth';
 import { exportLocales, processLocales } from './Config/Locales';
+import { EnvironmentEnum } from './enums/EnvironmentEnum';
 import { ConfigOptions } from './interfaces/Config/ConfigOptions';
 
 export { transformConfig } from './Config/Config';
@@ -10,6 +11,7 @@ export { transformSitemap } from './Config/Sitemap';
 export * from './interfaces/Config/ConfigOptions';
 export * from './interfaces/Config/OutputOptions';
 export type { ExportAs, FormatAs } from './types/Config/OptionType';
+export { EnvironmentEnum };
 
 /**
  * Private function to fetch locales

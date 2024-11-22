@@ -88,6 +88,20 @@ module.exports = {
 };
 ```
 
+```json
+{
+  "params": {
+    "<app-brand>": {
+      "API_MAIN_URL": {
+        "dev": "<api-dev>",
+        "stag": "<api-staging>",
+        "prod": "<api-production>"
+      }
+    }
+  }
+}
+```
+
 ### Fetch All
 
 To fetch both locales and config.
@@ -274,8 +288,6 @@ initSentry({
 ```js
 import { formatAccountNumber } from '@andre1502/react-utilities';
 // OR
-import { formatAccountNumber } from '@andre1502/react-utilities/fmt';
-// OR
 import { formatAccountNumber } from '@andre1502/react-utilities/format';
 
 const accountNumber = '1234567890123456';
@@ -290,8 +302,6 @@ console.log(`result: ${result}`);
 
 ```js
 import { formatNumber } from '@andre1502/react-utilities';
-// OR
-import { formatNumber } from '@andre1502/react-utilities/fmt';
 // OR
 import { formatNumber } from '@andre1502/react-utilities/format';
 
@@ -315,8 +325,6 @@ console.log(`result: ${result}`);
 ```js
 import { getCurrencySymbol } from '@andre1502/react-utilities';
 // OR
-import { getCurrencySymbol } from '@andre1502/react-utilities/fmt';
-// OR
 import { getCurrencySymbol } from '@andre1502/react-utilities/format';
 
 const currency = 'TWD';
@@ -333,8 +341,6 @@ console.log(`result: ${result}`);
 ```js
 import { parseFormatNumber } from '@andre1502/react-utilities';
 // OR
-import { parseFormatNumber } from '@andre1502/react-utilities/fmt';
-// OR
 import { parseFormatNumber } from '@andre1502/react-utilities/format';
 
 const lang = 'zh-TW';
@@ -343,4 +349,47 @@ const result = parseFormatNumber(lang, value);
 
 console.log(`result: ${result}`);
 // output: 1000
+```
+
+## I18n
+
+```js
+import { initReactI18next } from 'react-i18next';
+import { version } from './package.json';
+import enUS from './en-US.json';
+// ---
+import { EnvironmentEnum, initI18n } from '@andre1502/react-utilities';
+// OR
+import { EnvironmentEnum, initI18n } from '@andre1502/react-utilities/i18n';
+
+const localLang = 'en-US';
+const fallbackLang = 'en-US';
+const langCacheExpiredTimeMs = 60 * 60 * 1000;
+
+// translation language from json file.
+const resources = {
+  'en-US': { translation: enUS },
+};
+
+// optional, if false or undefined will use resources value
+const withLocalstorageBackend = false;
+
+// change this to real CDN url or cloud storage with direct access like AWS S3 or GCP cloud storage.
+// optional, if empty, false or undefined will use resources value
+const cdnUrl = 'http://cdnurl.com';
+
+// optional, if false or undefined disable debug mode
+const debug = false;
+
+initI18n(
+  initReactI18next,
+  localLang,
+  fallbackLang,
+  langCacheExpiredTimeMs,
+  resources,
+  version,
+  withLocalstorageBackend,
+  cdnUrl,
+  debug,
+);
 ```

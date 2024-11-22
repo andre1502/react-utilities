@@ -53,6 +53,11 @@ __metadata:
     eslint-plugin-storybook: "npm:^0.8.0"
     google-auth-library: "npm:^9.11.0"
     googleapis: "npm:^140.0.1"
+    i18next: "npm:^23.16.5"
+    i18next-chained-backend: "npm:^4.6.2"
+    i18next-http-backend: "npm:^2.6.2"
+    i18next-localstorage-backend: "npm:^4.2.0"
+    i18next-resources-to-backend: "npm:^1.2.1"
     lodash: "npm:^4.17.21"
     prettier: "npm:^3.3.3"
     prettier-plugin-organize-imports: "npm:^4.0.0"
@@ -1568,6 +1573,15 @@ __metadata:
   version: 0.8.0
   resolution: "@babel/regjsgen@npm:0.8.0"
   checksum: 10c0/4f3ddd8c7c96d447e05c8304c1d5ba3a83fcabd8a716bc1091c2f31595cdd43a3a055fff7cb5d3042b8cb7d402d78820fcb4e05d896c605a7d8bcf30f2424c4a
+  languageName: node
+  linkType: hard
+
+"@babel/runtime@npm:^7.22.15, @babel/runtime@npm:^7.23.2":
+  version: 7.26.0
+  resolution: "@babel/runtime@npm:7.26.0"
+  dependencies:
+    regenerator-runtime: "npm:^0.14.0"
+  checksum: 10c0/12c01357e0345f89f4f7e8c0e81921f2a3e3e101f06e8eaa18a382b517376520cd2fa8c237726eb094dab25532855df28a7baaf1c26342b52782f6936b07c287
   languageName: node
   linkType: hard
 
@@ -3278,6 +3292,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cross-fetch@npm:4.0.0":
+  version: 4.0.0
+  resolution: "cross-fetch@npm:4.0.0"
+  dependencies:
+    node-fetch: "npm:^2.6.12"
+  checksum: 10c0/386727dc4c6b044746086aced959ff21101abb85c43df5e1d151547ccb6f338f86dec3f28b9dbddfa8ff5b9ec8662ed2263ad4607a93b2dc354fb7fe3bbb898a
+  languageName: node
+  linkType: hard
+
 "cross-spawn@npm:^7.0.0, cross-spawn@npm:^7.0.1, cross-spawn@npm:^7.0.2":
   version: 7.0.3
   resolution: "cross-spawn@npm:7.0.3"
@@ -4422,6 +4445,51 @@ __metadata:
   languageName: node
   linkType: hard
 
+"i18next-chained-backend@npm:^4.6.2":
+  version: 4.6.2
+  resolution: "i18next-chained-backend@npm:4.6.2"
+  dependencies:
+    "@babel/runtime": "npm:^7.23.2"
+  checksum: 10c0/319d7b69b9c86e6b0684e8506bd7d3ef55fe149695f9b5602ac4f2d335b85efdfbbb771406cd79936ecccf7ab1671055ebf4acd473addd6117d43a0265565270
+  languageName: node
+  linkType: hard
+
+"i18next-http-backend@npm:^2.6.2":
+  version: 2.6.2
+  resolution: "i18next-http-backend@npm:2.6.2"
+  dependencies:
+    cross-fetch: "npm:4.0.0"
+  checksum: 10c0/8ae0c57293f0ebf5e67d629e526b98cd2d396fd48b8be56cdcb9565c2e5b1a8e46b323055682f5c9425e27fd5012c59dac380ccec053353facb23e69f5271938
+  languageName: node
+  linkType: hard
+
+"i18next-localstorage-backend@npm:^4.2.0":
+  version: 4.2.0
+  resolution: "i18next-localstorage-backend@npm:4.2.0"
+  dependencies:
+    "@babel/runtime": "npm:^7.22.15"
+  checksum: 10c0/b19b4c8b23f8b84cf4e7ba90086fdb60c75b211431e2ee9df07aee77f8f622470b87ee0c1ede19ebe07fee2dc697065f02f6d662d31ae047e6e77186ab31bbee
+  languageName: node
+  linkType: hard
+
+"i18next-resources-to-backend@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "i18next-resources-to-backend@npm:1.2.1"
+  dependencies:
+    "@babel/runtime": "npm:^7.23.2"
+  checksum: 10c0/ba83152726aae34ab34bb152518b666d4393bf816c91ab6e1064090cbbb9b235d3dfbcf9d5640c825819644fddcaf7799f581cdbe6abb3e7b11d58c50dc4644a
+  languageName: node
+  linkType: hard
+
+"i18next@npm:^23.16.5":
+  version: 23.16.5
+  resolution: "i18next@npm:23.16.5"
+  dependencies:
+    "@babel/runtime": "npm:^7.23.2"
+  checksum: 10c0/4f926c09dc1087041084dbbfb8307bf2fdba1981069dece1c563577ca8a38a23ebfadf4d1c50c4091b640a8c8bf81d9cd008bd3e587bd452a6b9c728d5065346
+  languageName: node
+  linkType: hard
+
 "iconv-lite@npm:^0.6.2":
   version: 0.6.3
   resolution: "iconv-lite@npm:0.6.3"
@@ -5235,7 +5303,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-fetch@npm:^2.6.7, node-fetch@npm:^2.6.9":
+"node-fetch@npm:^2.6.12, node-fetch@npm:^2.6.7, node-fetch@npm:^2.6.9":
   version: 2.7.0
   resolution: "node-fetch@npm:2.7.0"
   dependencies:

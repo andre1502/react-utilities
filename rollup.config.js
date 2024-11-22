@@ -9,15 +9,15 @@ import typescript from 'typescript';
 export default [
   {
     input: [
-      'src/index.ts',
-      'src/index-fmt.ts',
-      'src/index-rn.ts',
-      'src/index-cli.ts',
-      'src/format.ts',
-      'src/sentry.ts',
-      'src/sentry-rn.ts',
-      'src/sentry-cli.ts',
       'src/config-cli.ts',
+      'src/format.ts',
+      'src/i18n.ts',
+      'src/index-cli.ts',
+      'src/index-rn.ts',
+      'src/index.ts',
+      'src/sentry-cli.ts',
+      'src/sentry-rn.ts',
+      'src/sentry.ts',
     ],
     output: [
       {

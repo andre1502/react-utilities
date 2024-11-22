@@ -1,6 +1,6 @@
 {
   "name": "@andre1502/react-utilities",
-  "version": "0.9.1",
+  "version": "0.9.3",
   "description": "module to combine common functions",
   "repository": {
     "type": "git",
@@ -14,11 +14,6 @@
       "types": "./dist/index.d.ts",
       "require": "./dist/index.cjs",
       "import": "./dist/index.mjs"
-    },
-    "./fmt": {
-      "types": "./dist/index-fmt.d.ts",
-      "require": "./dist/index-fmt.cjs",
-      "import": "./dist/index-fmt.mjs"
     },
     "./react-native": {
       "types": "./dist/index-rn.d.ts",
@@ -34,6 +29,11 @@
       "types": "./dist/format.d.ts",
       "require": "./dist/format.cjs",
       "import": "./dist/format.mjs"
+    },
+    "./i18n": {
+      "types": "./dist/i18n.d.ts",
+      "require": "./dist/i18n.cjs",
+      "import": "./dist/i18n.mjs"
     },
     "./sentry": {
       "types": "./dist/sentry.d.ts",
@@ -89,6 +89,11 @@
     "@types/lodash": "^4.17.7",
     "google-auth-library": "^9.11.0",
     "googleapis": "^140.0.1",
+    "i18next": "^23.16.5",
+    "i18next-chained-backend": "^4.6.2",
+    "i18next-http-backend": "^2.6.2",
+    "i18next-localstorage-backend": "^4.2.0",
+    "i18next-resources-to-backend": "^1.2.1",
     "lodash": "^4.17.21",
     "sitemap": "^8.0.0"
   },
