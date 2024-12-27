@@ -386,7 +386,7 @@ const debug = false;
 
 initI18n({
   initReactI18next: initReactI18next,
-  localLang: localLang,
+  lang: localLang,
   fallbackLang: fallbackLang,
   langCacheExpiredTimeMs: langCacheExpiredTimeMs,
   resources: resources,
