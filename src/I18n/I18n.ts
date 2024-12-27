@@ -119,8 +119,13 @@ const initI18n = ({
   }
 
   if (!i18next.isInitialized) {
-    i18next
-      .use(ChainedBackend)
+    let i18n = i18next;
+
+    if (useBackend) {
+      i18n = i18n.use(ChainedBackend);
+    }
+
+    i18n
       .use(languageDetector)
       .use(initReactI18next) // passes i18n down to react-i18next
       .init(config, (ex, t) => {
