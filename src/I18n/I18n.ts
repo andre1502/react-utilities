@@ -116,6 +116,11 @@ const initI18n = ({
         bindI18nStore: 'added', // this way, when the HttpBackend delivers new translations (thanks to refreshAndUpdateStore), the UI gets updated
       },
     };
+  } else {
+    config = {
+      ...config,
+      resources: resources,
+    };
   }
 
   if (!i18next.isInitialized) {
