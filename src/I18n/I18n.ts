@@ -8,23 +8,37 @@ const getV = (divider: number): number => {
   return Math.floor(Date.now() / divider);
 };
 
-const initI18n = (
-  initReactI18next: ThirdPartyModule,
-  lang: string,
-  fallbackLang: string,
-  langCacheExpiredTimeMs: number,
-  resources: { [key: string]: any },
-  version: string,
-  withLocalstorageBackend?: boolean,
-  cdnUrl?: string,
-  debug?: boolean,
-) => {
+export interface InitI18nProps {
+  initReactI18next: ThirdPartyModule;
+  lang: string;
+  fallbackLang: string;
+  langCacheExpiredTimeMs: number;
+  resources: { [key: string]: any };
+  version: string;
+  useBackend: boolean;
+  withLocalstorageBackend?: boolean;
+  cdnUrl?: string;
+  debug?: boolean;
+}
+
+const initI18n = ({
+  initReactI18next,
+  lang,
+  fallbackLang,
+  langCacheExpiredTimeMs,
+  resources,
+  version,
+  useBackend,
+  withLocalstorageBackend = false,
+  cdnUrl = '',
+  debug = false,
+}: InitI18nProps) => {
   let backends: Array<any> = [];
   let backendOptions: Array<any> = [];
   const langs = Object.keys(resources);
 
   // https://www.i18next.com/how-to/backend-fallback
-  if (withLocalstorageBackend) {
+  if (useBackend && withLocalstorageBackend) {
     const versions: { [key: string]: string } = {};
 
     langs.forEach((value) => Object.assign(versions, { [value]: version }));
@@ -42,7 +56,7 @@ const initI18n = (
     });
   }
 
-  if (cdnUrl) {
+  if (useBackend && cdnUrl) {
     backends.push(HttpBackend);
     backendOptions.push({
       // load resources from url path
@@ -56,7 +70,9 @@ const initI18n = (
     });
   }
 
-  backends.push(ResourcesToBackend(resources));
+  if (useBackend) {
+    backends.push(ResourcesToBackend(resources));
+  }
 
   // https://www.i18next.com/misc/creating-own-plugins#languagedetector
   const languageDetector: any = {
@@ -71,8 +87,8 @@ const initI18n = (
     },
   };
 
-  const config: InitOptions = {
-    debug: debug ?? false,
+  let config: InitOptions = {
+    debug: debug,
     compatibilityJSON: 'v4',
     ns: ['translation'],
     defaultNS: 'translation',
@@ -81,20 +97,26 @@ const initI18n = (
     load: 'currentOnly',
     keySeparator: false,
     nonExplicitSupportedLngs: true,
-    backend: {
-      backends: backends,
-      backendOptions: backendOptions,
-      cacheHitMode: 'refreshAndUpdateStore',
-      reloadInterval: langCacheExpiredTimeMs,
-      refreshExpirationTime: langCacheExpiredTimeMs, // only after determined time it should trigger a refresh if necessary
-    },
-    react: {
-      bindI18nStore: 'added', // this way, when the HttpBackend delivers new translations (thanks to refreshAndUpdateStore), the UI gets updated
-    },
     interpolation: {
       escapeValue: false, // react already safes from xss
     },
   };
+
+  if (useBackend) {
+    config = {
+      ...config,
+      backend: {
+        backends: backends,
+        backendOptions: backendOptions,
+        cacheHitMode: 'refreshAndUpdateStore',
+        reloadInterval: langCacheExpiredTimeMs,
+        refreshExpirationTime: langCacheExpiredTimeMs, // only after determined time it should trigger a refresh if necessary
+      },
+      react: {
+        bindI18nStore: 'added', // this way, when the HttpBackend delivers new translations (thanks to refreshAndUpdateStore), the UI gets updated
+      },
+    };
+  }
 
   if (!i18next.isInitialized) {
     i18next

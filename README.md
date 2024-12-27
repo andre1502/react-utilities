@@ -364,12 +364,15 @@ import { EnvironmentEnum, initI18n } from '@andre1502/react-utilities/i18n';
 
 const localLang = 'en-US';
 const fallbackLang = 'en-US';
-const langCacheExpiredTimeMs = 60 * 60 * 1000;
+const langCacheExpiredTimeMs = 24 * 60 * 60 * 1000;
 
 // translation language from json file.
 const resources = {
   'en-US': { translation: enUS },
 };
+
+// determine whether need to use backend support to load resources.
+const useBackend = false;
 
 // optional, if false or undefined will use resources value
 const withLocalstorageBackend = false;
@@ -381,15 +384,16 @@ const cdnUrl = 'http://cdnurl.com';
 // optional, if false or undefined disable debug mode
 const debug = false;
 
-initI18n(
-  initReactI18next,
-  localLang,
-  fallbackLang,
-  langCacheExpiredTimeMs,
-  resources,
-  version,
-  withLocalstorageBackend,
-  cdnUrl,
-  debug,
-);
+initI18n({
+  initReactI18next: initReactI18next,
+  localLang: localLang,
+  fallbackLang: fallbackLang,
+  langCacheExpiredTimeMs: langCacheExpiredTimeMs,
+  resources: resources,
+  version: version,
+  useBackend: useBackend,
+  withLocalstorageBackend: withLocalstorageBackend,
+  cdnUrl: cdnUrl,
+  debug: debug,
+});
 ```
