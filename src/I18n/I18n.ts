@@ -106,10 +106,6 @@ const initI18n = (
           console.error(`Error when i18n init`, ex);
           return;
         }
-
-        setInterval(() => {
-          i18next.reloadResources();
-        }, langCacheExpiredTimeMs);
       });
   }
 };
