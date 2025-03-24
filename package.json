@@ -1,6 +1,6 @@
 {
   "name": "@andre1502/react-utilities",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "module to combine common functions",
   "repository": {
     "type": "git",
@@ -29,6 +29,11 @@
       "types": "./dist/format.d.ts",
       "require": "./dist/format.cjs",
       "import": "./dist/format.mjs"
+    },
+    "./hooks": {
+      "types": "./dist/hooks.d.ts",
+      "require": "./dist/hooks.cjs",
+      "import": "./dist/hooks.mjs"
     },
     "./i18n": {
       "types": "./dist/i18n.d.ts",
@@ -91,9 +96,11 @@
     "@formatjs/intl-pluralrules": "^5.4.4",
     "@formatjs/intl-relativetimeformat": "^11.4.11",
     "@sentry/react-native": "^6.9.1",
+    "@types/howler": "^2.2.12",
     "@types/lodash-es": "^4.17.12",
     "google-auth-library": "^9.11.0",
     "googleapis": "^140.0.1",
+    "howler": "^2.2.4",
     "i18next": "^24.2.3",
     "i18next-chained-backend": "^4.6.2",
     "i18next-http-backend": "^3.0.2",

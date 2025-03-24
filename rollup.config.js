@@ -11,6 +11,7 @@ export default [
     input: [
       'src/config-cli.ts',
       'src/format.ts',
+      'src/hooks.ts',
       'src/i18n.ts',
       'src/index-cli.ts',
       'src/index-rn.ts',
@@ -37,6 +38,7 @@ export default [
       },
     ],
     external: [
+      'howler',
       'lodash-es',
       'google-auth-library',
       'googleapis',
