@@ -1,7 +1,4 @@
-import {
-  captureConsoleIntegration,
-  httpClientIntegration,
-} from '@sentry/integrations';
+import { captureConsoleIntegration } from '@sentry/core';
 import * as Sentry from '@sentry/react-native';
 import { InitOptionsRN } from '../interfaces/Sentry/InitOptionsRN';
 import { StringRegexArr } from '../types/Sentry/OptionType';
@@ -36,7 +33,7 @@ const initSentry = (options: InitOptionsRN): void => {
     options?.httpClientIntegrationOptions?.failedRequestTargets
   ) {
     integrations.push(
-      httpClientIntegration({
+      Sentry.httpClientIntegration({
         failedRequestStatusCodes:
           options.httpClientIntegrationOptions.failedRequestStatusCodes,
         failedRequestTargets:
