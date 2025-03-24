@@ -36,7 +36,7 @@ export default [
       },
     ],
     external: [
-      'lodash',
+      'lodash-es',
       'google-auth-library',
       'googleapis',
       '@sentry/cli',

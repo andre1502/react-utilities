@@ -1,4 +1,4 @@
-import * as lodash from 'lodash';
+import { isNull } from 'lodash-es';
 import { EnvironmentEnum } from '../enums/EnvironmentEnum';
 import { OutputMap } from '../interfaces/Config/OutputMap';
 import { OutputOptions } from '../interfaces/Config/OutputOptions';
@@ -170,7 +170,7 @@ const contentMap = (key: string, value: any, exportAs: string): string => {
 
   switch (exportAs) {
     case 'ts':
-      if (lodash.isNull(value)) {
+      if (isNull(value)) {
         content += `export const ${key}: string | null = ${value};\n`;
       } else if (typeof value === 'boolean') {
         content += `export const ${key}: boolean = ${value};\n`;
