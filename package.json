@@ -1,6 +1,6 @@
 {
   "name": "@andre1502/react-utilities",
-  "version": "0.9.9",
+  "version": "1.0.0",
   "description": "module to combine common functions",
   "repository": {
     "type": "git",
@@ -44,6 +44,11 @@
       "types": "./dist/sentry-rn.d.ts",
       "require": "./dist/sentry-rn.cjs",
       "import": "./dist/sentry-rn.mjs"
+    },
+    "./utils": {
+      "types": "./dist/utils.d.ts",
+      "require": "./dist/utils.cjs",
+      "import": "./dist/utils.mjs"
     },
     "./sentry-cli": {
       "types": "./dist/sentry-cli.d.ts",

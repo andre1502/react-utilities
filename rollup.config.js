@@ -18,6 +18,7 @@ export default [
       'src/sentry-cli.ts',
       'src/sentry-rn.ts',
       'src/sentry.ts',
+      'src/utils.ts',
     ],
     output: [
       {

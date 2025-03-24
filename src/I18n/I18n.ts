@@ -3,10 +3,7 @@ import ChainedBackend from 'i18next-chained-backend';
 import HttpBackend from 'i18next-http-backend';
 import LocalStorageBackend from 'i18next-localstorage-backend';
 import ResourcesToBackend from 'i18next-resources-to-backend';
-
-const getV = (divider: number): number => {
-  return Math.floor(Date.now() / divider);
-};
+import { getV } from '../utils';
 
 export interface InitI18nProps {
   initReactI18next: ThirdPartyModule;
