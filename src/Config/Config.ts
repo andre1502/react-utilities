@@ -2,6 +2,7 @@ import { isNull } from 'lodash-es';
 import { EnvironmentEnum } from '../enums/EnvironmentEnum';
 import { OutputMap } from '../interfaces/Config/OutputMap';
 import { OutputOptions } from '../interfaces/Config/OutputOptions';
+import { isHiddenKey } from '../utils';
 import { outputToFile } from './Output';
 
 /**
@@ -211,9 +212,10 @@ const transformConfig = (
   let content = contentMap(envKey, envMap(env), options.exportAs!);
 
   Object.keys(data).forEach((key) => {
-    const newConfigKey = configKeyPrefix ? `${configKeyPrefix}${key}` : key;
+    const newConfigKey =
+      configKeyPrefix && !isHiddenKey(key) ? `${configKeyPrefix}${key}` : key;
 
-    if (key === 'BASE_PROJECT') {
+    if (key === 'BASE_PROJECT' || key === '__BASE_PROJECT') {
       const extensionFile = [
         `.${data[key]}.js`,
         `.${data[key]}.jsx`,
@@ -233,7 +235,7 @@ const transformConfig = (
       return;
     }
 
-    if (key === 'SITEMAP') {
+    if (key === 'SITEMAP' || key === '__SITEMAP') {
       content += contentMap(
         newConfigKey,
         JSON.stringify(data[key]),

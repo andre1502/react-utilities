@@ -73,3 +73,7 @@ export const isValidHttpUrl = (url: string) => {
     return false;
   }
 };
+
+export const isHiddenKey = (key: string) => {
+  return key.startsWith('__');
+};
