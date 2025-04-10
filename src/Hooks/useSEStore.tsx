@@ -23,7 +23,12 @@ const useSEStore = (key: string) => {
     window.dispatchEvent(new Event(key));
   };
 
-  return { dataSEStore, setDataSEStore };
+  const removeDataSEStore = (key: string) => {
+    window.localStorage.removeItem(key);
+    window.dispatchEvent(new Event(key));
+  };
+
+  return { dataSEStore, setDataSEStore, removeDataSEStore };
 };
 
 export default useSEStore;
