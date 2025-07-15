@@ -1,5 +1,7 @@
+import { copyFile, existsSync } from 'fs';
 import { isNull } from 'lodash-es';
 import { EnvironmentEnum } from '../enums/EnvironmentEnum';
+import { EntryOptions } from '../interfaces/Config/EntryOptions';
 import { OutputMap } from '../interfaces/Config/OutputMap';
 import { OutputOptions } from '../interfaces/Config/OutputOptions';
 import { isHiddenKey } from '../utils';
@@ -275,4 +277,49 @@ const transformConfig = (
   outputToFile(content, options);
 };
 
-export { exportConfig, processConfig, transformConfig };
+/**
+ * Change Entry index.html file
+ * Format entry file should be index[.{version}][.{env}].html
+ *
+ * @param {string} version
+ * @param {string} env
+ * @param {EntryOptions} options
+ * @return {void}
+ */
+const changeEntry = (
+  version: string,
+  env: string,
+  options: EntryOptions,
+): void => {
+  const newPath = 'index.html';
+  let oldPath = `index`;
+
+  if (!options.excludeVersion.includes(version)) {
+    oldPath = `.${version}.`;
+  }
+
+  if (!options.excludeEnv.includes(env)) {
+    oldPath = `${oldPath}.${env}`;
+  }
+
+  oldPath = `${oldPath}.html`;
+
+  if (oldPath !== newPath && existsSync(oldPath)) {
+    copyFile(oldPath, newPath, (err) => {
+      if (err) {
+        console.error(err);
+        return;
+      }
+
+      console.log(
+        `File copied from '${oldPath}' to '${newPath}' successfully!`,
+      );
+    });
+
+    return;
+  }
+
+  console.log('use current index.html');
+};
+
+export { changeEntry, exportConfig, processConfig, transformConfig };

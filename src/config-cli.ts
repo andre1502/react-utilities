@@ -6,7 +6,7 @@ import { exportLocales, processLocales } from './Config/Locales';
 import { EnvironmentEnum } from './enums/EnvironmentEnum';
 import { ConfigOptions } from './interfaces/Config/ConfigOptions';
 
-export { transformConfig } from './Config/Config';
+export { changeEntry, transformConfig } from './Config/Config';
 export { transformSitemap } from './Config/Sitemap';
 export * from './interfaces/Config/ConfigOptions';
 export * from './interfaces/Config/OutputOptions';
