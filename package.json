@@ -86,6 +86,9 @@
     "prepublishOnly": "yarn build",
     "test": "echo \"Warn: no test specified, ignore it\" && exit 0"
   },
+  "resolutions": {
+    "baseline-browser-mapping": "latest"
+  },
   "dependencies": {
     "@formatjs/intl-datetimeformat": "^6.18.0",
     "@formatjs/intl-displaynames": "^6.8.11",
@@ -106,7 +109,7 @@
     "i18next-http-backend": "^3.0.2",
     "i18next-localstorage-backend": "^4.2.0",
     "i18next-resources-to-backend": "^1.2.1",
-    "lodash-es": "^4.17.21",
+    "lodash-es": "^4.17.23",
     "sitemap": "^8.0.0"
   },
   "devDependencies": {
