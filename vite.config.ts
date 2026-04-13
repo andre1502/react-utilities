@@ -11,7 +11,7 @@ export default defineConfig({
   build: {
     emptyOutDir: false,
     target: 'esnext',
-    sourcemap: false,
+    sourcemap: true,
     minify: 'oxc',
     lib: {
       entry: {
@@ -22,7 +22,6 @@ export default defineConfig({
         'index-cli': resolve(__dirname, 'src/index-cli.ts'),
         'index-rn': resolve(__dirname, 'src/index-rn.ts'),
         index: resolve(__dirname, 'src/index.ts'),
-        'sentry-cli': resolve(__dirname, 'src/sentry-cli.ts'),
         'sentry-rn': resolve(__dirname, 'src/sentry-rn.ts'),
         sentry: resolve(__dirname, 'src/sentry.ts'),
         utils: resolve(__dirname, 'src/utils.ts'),

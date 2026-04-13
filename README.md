@@ -28,9 +28,9 @@ npm install @andre1502/react-utilities
 Filename will be auto defined by locales key (e.g. zh-TW, filename will be zh-tw.json).
 
 ```js
-const { fetchLocales } = require('@andre1502/react-utilities/cli');
+import { fetchLocales } from '@andre1502/react-utilities/cli';
 // OR
-const { fetchLocales } = require('@andre1502/react-utilities/config-cli');
+import { fetchLocales } from '@andre1502/react-utilities/config-cli';
 
 // https://docs.google.com/spreadsheets/d/<google-sheet-id>/edit
 const optionLocales = {
@@ -52,9 +52,9 @@ fetchLocales(optionLocales);
 Config file only support export as js file, since you need to combine it with transform function.
 
 ```js
-const { fetchConfig } = require('@andre1502/react-utilities/cli');
+import { fetchConfig } from '@andre1502/react-utilities/cli';
 // OR
-const { fetchConfig } = require('@andre1502/react-utilities/config-cli');
+import { fetchConfig } from '@andre1502/react-utilities/config-cli';
 
 // https://docs.google.com/spreadsheets/d/<google-sheet-id>/edit
 const optionConfig = {
@@ -107,9 +107,9 @@ module.exports = {
 To fetch both locales and config.
 
 ```js
-const { fetchAll } = require('@andre1502/react-utilities/cli');
+import { fetchAll } from '@andre1502/react-utilities/cli';
 // OR
-const { fetchAll } = require('@andre1502/react-utilities/config-cli');
+import { fetchAll } from '@andre1502/react-utilities/config-cli';
 
 // https://docs.google.com/spreadsheets/d/<google-sheet-id>/edit
 const spreadsheetId = ''; // Google Sheet Id
@@ -145,14 +145,17 @@ fetchAll([optionLocales, optionConfig]);
 ### Transform Config
 
 ```js
-const { transformConfig } = require('@andre1502/react-utilities/cli');
+import { transformConfig } from '@andre1502/react-utilities/cli';
 // OR
-const { transformConfig } = require('@andre1502/react-utilities/config-cli');
+import { transformConfig } from '@andre1502/react-utilities/config-cli';
 const version = '<app-brand>';
 const env = '<env-value>'; // support 'dev' | 'stag' | 'prod'
 
-let { params } = require('./versionConfig');
-const currentConfig = { ...params?.default, ...params[version] };
+import versionConfig from './versionConfig.json' with { type: 'json' };
+const currentConfig = {
+  ...versionConfig.params.default,
+  ...versionConfig.params[version],
+};
 
 transformConfig(currentConfig, env, 'REACT_APP_', {
   folder: '.', // transformed config folder location
@@ -165,14 +168,17 @@ transformConfig(currentConfig, env, 'REACT_APP_', {
 ### Transform Sitemap
 
 ```js
-const { transformSitemap } = require('@andre1502/react-utilities/cli');
+import { transformSitemap } from '@andre1502/react-utilities/cli';
 // OR
-const { transformSitemap } = require('@andre1502/react-utilities/config-cli');
+import { transformSitemap } from '@andre1502/react-utilities/config-cli';
 const version = '<app-brand>';
 const env = '<env-value>'; // support 'dev' | 'stag' | 'prod'
 
-let { params } = require('./versionConfig');
-const currentConfig = { ...params?.default, ...params[version] };
+import versionConfig from './versionConfig.json' with { type: 'json' };
+const currentConfig = {
+  ...versionConfig.params.default,
+  ...versionConfig.params[version],
+};
 const hostname = currentConfig['MAIN_URL'][env];
 const urls = currentConfig['SITEMAP'];
 
@@ -180,43 +186,6 @@ transformSitemap(hostname, urls, true, {
   folder: './public', // transformed sitemap folder location
   filename: 'sitemap.xml', // transformed sitemap filename
   isFilenameLowercase: false, // set if filename need to be lowercase
-});
-```
-
-## Sentry CLI
-
-### Release Sentry Source Map
-
-Add `.sentryclirc` file in root project with these value
-
-```
-[defaults]
-url=https://<sentry_host_url>/
-org=<organization>
-project=<sentry_project_name>
-```
-
-Update system environment variables with
-
-```sh
-export SENTRY_AUTH_TOKEN=<sentry_auth_token>
-```
-
-Add sentry file in root project with this code
-
-```js
-const { releaseSentrySourceMap } = require('@andre1502/react-utilities/cli');
-// OR
-const {
-  releaseSentrySourceMap,
-} = require('@andre1502/react-utilities/sentry-cli');
-
-releaseSentrySourceMap({
-  env: '',
-  release: '',
-  includeFolder: [''],
-  urlPrefix: '~',
-  requiredEnvForSourceMap: [''],
 });
 ```
 

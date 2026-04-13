@@ -46,10 +46,6 @@
       "types": "./dist/utils.d.ts",
       "import": "./dist/utils.js"
     },
-    "./sentry-cli": {
-      "types": "./dist/sentry-cli.d.ts",
-      "import": "./dist/sentry-cli.js"
-    },
     "./config-cli": {
       "types": "./dist/config-cli.d.ts",
       "import": "./dist/config-cli.js"
