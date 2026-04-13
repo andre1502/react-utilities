@@ -1,13 +1,13 @@
 {
   "name": "@andre1502/react-utilities",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "module to combine common functions",
   "repository": {
     "type": "git",
     "url": "https://github.com/andre1502/react-utilities"
   },
   "license": "MIT",
-  "author": "andre1502",
+  "author": "andre1502<job@ratatouille90.com>(https://ratatouille90.com/)",
   "type": "module",
   "exports": {
     ".": {
@@ -109,7 +109,7 @@
     "i18next-http-backend": "^3.0.2",
     "i18next-localstorage-backend": "^4.2.0",
     "i18next-resources-to-backend": "^1.2.1",
-    "lodash-es": "^4.17.23",
+    "lodash-es": "^4.18.1",
     "sitemap": "^8.0.0"
   },
   "devDependencies": {
@@ -140,7 +140,7 @@
     "prettier-plugin-packagejson": "^2.5.15",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-native": "^0.80.0",
+    "react-native": "^0.85.0",
     "rollup": "^4.44.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "tslib": "^2.8.1",
