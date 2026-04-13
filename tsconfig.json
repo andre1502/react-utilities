@@ -35,7 +35,7 @@
     "rootDir": "src",
     "outDir": "./dist"
   },
-  "include": ["src"], // Specifies the directory to include when searching for TypeScript files.
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/*.d.ts"], // Specifies the directory to include when searching for TypeScript files.
   "exclude": [
     "node_modules",
     "dist",
