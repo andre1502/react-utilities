@@ -123,7 +123,6 @@
     "react-native": "*",
     "tslib": "*"
   },
-  "packageManager": "yarn@4.8.1",
   "publishConfig": {
     "@andre1502:registry": "https://registry.npmjs.org/"
   }
