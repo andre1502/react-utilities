@@ -1,7 +1,6 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
-
 export default defineConfig({
   plugins: [
     dts({
@@ -44,6 +43,23 @@ export default defineConfig({
         '@sentry/react',
         '@sentry/react-native',
         'localforage',
+        'fs',
+        'path',
+        'process',
+        'os',
+        'stream',
+        'http',
+        'https',
+        'readline',
+        'zlib',
+        'url',
+        'child_process',
+        'crypto',
+        'events',
+        'util',
+        'module',
+        'events',
+        /^node:/,
       ],
       output: {
         exports: 'named',
