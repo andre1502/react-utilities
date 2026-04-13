@@ -11,7 +11,9 @@ export default defineConfig({
   ],
   build: {
     emptyOutDir: false,
-    sourcemap: true,
+    target: 'esnext',
+    sourcemap: false,
+    minify: 'oxc',
     lib: {
       entry: {
         'config-cli': resolve(__dirname, 'src/config-cli.ts'),
@@ -26,9 +28,8 @@ export default defineConfig({
         sentry: resolve(__dirname, 'src/sentry.ts'),
         utils: resolve(__dirname, 'src/utils.ts'),
       },
-      formats: ['es', 'cjs'],
-      fileName: (format, entryName) =>
-        `${entryName}.${format === 'cjs' ? 'cjs' : 'mjs'}`,
+      formats: ['es'],
+      fileName: (format, entryName) => `${entryName}.js`,
     },
     rollupOptions: {
       external: [

@@ -40,7 +40,7 @@ const fetchGoogleSheet = async (
   spreadsheetId: string,
   spreadsheetTab: string,
 ): Promise<any[][] | null | undefined> => {
-  const sheets = google.sheets({ version: 'v4', auth });
+  const sheets = google.sheets({ version: 'v4', auth: auth as any });
 
   const res = await sheets.spreadsheets.values.get({
     spreadsheetId: spreadsheetId,

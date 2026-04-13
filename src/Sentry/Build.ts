@@ -39,7 +39,7 @@ const releaseSourceMap = async (options: SourceMapOptions): Promise<void> => {
   }
 
   try {
-    const cli = new SentryCli();
+    const cli = new (SentryCli as any)();
 
     console.log('Now creating sentry release ' + options.release);
 

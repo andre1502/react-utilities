@@ -12,63 +12,52 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs"
+      "import": "./dist/index.js"
     },
     "./react-native": {
       "types": "./dist/index-rn.d.ts",
-      "require": "./dist/index-rn.cjs",
-      "import": "./dist/index-rn.mjs"
+      "import": "./dist/index-rn.js"
     },
     "./cli": {
       "types": "./dist/index-cli.d.ts",
-      "require": "./dist/index-cli.cjs",
-      "import": "./dist/index-cli.mjs"
+      "import": "./dist/index-cli.js"
     },
     "./format": {
       "types": "./dist/format.d.ts",
-      "require": "./dist/format.cjs",
-      "import": "./dist/format.mjs"
+      "import": "./dist/format.js"
     },
     "./hooks": {
       "types": "./dist/hooks.d.ts",
-      "require": "./dist/hooks.cjs",
-      "import": "./dist/hooks.mjs"
+      "import": "./dist/hooks.js"
     },
     "./i18n": {
       "types": "./dist/i18n.d.ts",
-      "require": "./dist/i18n.cjs",
-      "import": "./dist/i18n.mjs"
+      "import": "./dist/i18n.js"
     },
     "./sentry": {
       "types": "./dist/sentry.d.ts",
-      "require": "./dist/sentry.cjs",
-      "import": "./dist/sentry.mjs"
+      "import": "./dist/sentry.js"
     },
     "./sentry-rn": {
       "types": "./dist/sentry-rn.d.ts",
-      "require": "./dist/sentry-rn.cjs",
-      "import": "./dist/sentry-rn.mjs"
+      "import": "./dist/sentry-rn.js"
     },
     "./utils": {
       "types": "./dist/utils.d.ts",
-      "require": "./dist/utils.cjs",
-      "import": "./dist/utils.mjs"
+      "import": "./dist/utils.js"
     },
     "./sentry-cli": {
       "types": "./dist/sentry-cli.d.ts",
-      "require": "./dist/sentry-cli.cjs",
-      "import": "./dist/sentry-cli.mjs"
+      "import": "./dist/sentry-cli.js"
     },
     "./config-cli": {
       "types": "./dist/config-cli.d.ts",
-      "require": "./dist/config-cli.cjs",
-      "import": "./dist/config-cli.mjs"
+      "import": "./dist/config-cli.js"
     }
   },
-  "main": "dist/index.cjs",
-  "module": "dist/index.mjs",
-  "react-native": "dist/index-rn.mjs",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "react-native": "dist/index-rn.js",
   "types": "dist/index.d.ts",
   "files": [
     "src",
@@ -87,27 +76,27 @@
     "baseline-browser-mapping": "latest"
   },
   "dependencies": {
-    "@formatjs/intl-datetimeformat": "^6.18.0",
-    "@formatjs/intl-displaynames": "^6.8.11",
-    "@formatjs/intl-getcanonicallocales": "^2.5.5",
-    "@formatjs/intl-listformat": "^7.7.11",
-    "@formatjs/intl-locale": "^4.2.11",
-    "@formatjs/intl-numberformat": "^8.15.4",
-    "@formatjs/intl-pluralrules": "^5.4.4",
-    "@formatjs/intl-relativetimeformat": "^11.4.11",
-    "@sentry/react-native": "^6.15.1",
+    "@formatjs/intl-datetimeformat": "^7.3.1",
+    "@formatjs/intl-displaynames": "^7.3.1",
+    "@formatjs/intl-getcanonicallocales": "^3.2.2",
+    "@formatjs/intl-listformat": "^8.3.1",
+    "@formatjs/intl-locale": "^5.3.1",
+    "@formatjs/intl-numberformat": "^9.3.1",
+    "@formatjs/intl-pluralrules": "^6.3.1",
+    "@formatjs/intl-relativetimeformat": "^12.3.1",
+    "@sentry/react-native": "^8.7.0",
     "@types/howler": "^2.2.12",
     "@types/lodash-es": "^4.17.12",
-    "google-auth-library": "^10.1.0",
-    "googleapis": "^150.0.1",
+    "google-auth-library": "^10.6.2",
+    "googleapis": "^171.4.0",
     "howler": "^2.2.4",
-    "i18next": "^25.2.1",
-    "i18next-chained-backend": "^4.6.2",
-    "i18next-http-backend": "^3.0.2",
-    "i18next-localstorage-backend": "^4.2.0",
+    "i18next": "^26.0.4",
+    "i18next-chained-backend": "^5.0.3",
+    "i18next-http-backend": "^3.0.4",
+    "i18next-localstorage-backend": "^4.3.1",
     "i18next-resources-to-backend": "^1.2.1",
     "lodash-es": "^4.18.1",
-    "sitemap": "^8.0.0"
+    "sitemap": "^9.0.1"
   },
   "devDependencies": {
     "@types/node": "^25.6.0",

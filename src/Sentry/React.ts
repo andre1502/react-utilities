@@ -69,14 +69,12 @@ const initSentry = (options: InitOptions): void => {
     release: options.release,
     environment: options.env,
     ignoreErrors: ignoreErrors,
-    sampleRate: 1.0,
+    sampleRate: 0.7,
     maxBreadcrumbs: 50,
     attachStacktrace: true,
-    autoSessionTracking: true,
     sendClientReports: true,
-    enableTracing: true,
     // Performance Monitoring
-    tracesSampleRate: 1.0, //  Capture 100% of the transactions
+    tracesSampleRate: 0.7, //  Capture 100% of the transactions
     // Set 'tracePropagationTargets' to control for which URLs distributed tracing should be enabled
     tracePropagationTargets: ['localhost'],
     sendDefaultPii: true,
