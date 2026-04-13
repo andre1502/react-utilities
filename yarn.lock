@@ -56,9 +56,6 @@ __metadata:
     react-dom: "*"
     react-native: "*"
     tslib: "*"
-  dependenciesMeta:
-    "@rollup/rollup-linux-x64-gnu":
-      optional: true
   languageName: unknown
   linkType: soft
 
