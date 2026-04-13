@@ -1,0 +1,32 @@
+name: Publish React Utilities
+
+on:
+  push:
+    tags:
+      - "[0-9]+.[0-9]+.[0-9]+-release"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: "25"
+          registry-url: "https://registry.npmjs.org"
+          cache: "yarn"
+
+      - name: Install Dependencies
+        run: yarn install --immutable --frozen-lockfile
+
+      - name: Run Build
+        run: yarn build
+
+      - name: Publish to NPM
+        run: npm publish --provenance --access public
