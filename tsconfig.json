@@ -18,7 +18,6 @@
     "resolveJsonModule": true, // Enables importing JSON modules.
     "isolatedModules": true, // Ensures each file is treated as a separate module.
     "esModuleInterop": true,
-    "downlevelIteration": true,
     "jsx": "react-jsx", // Configures JSX support for React.
     "allowJs": true,
     "checkJs": true,
