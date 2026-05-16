@@ -154,7 +154,7 @@ const envMap = (env: string): string => {
       result = EnvironmentEnum.PRODUCTION;
       break;
     default:
-      throw new Error(`env ${env} not supported.`);
+      result = env;
   }
 
   return result;

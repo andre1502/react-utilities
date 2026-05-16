@@ -367,6 +367,45 @@ initI18n({
 });
 ```
 
+## Local Testing
+
+If you want to test this library in another local project, here are the most effective ways to do it.
+
+### Method 1: The Quickest Way (`yarn add`)
+
+Best for a 10-second check.
+
+1. In your other project: `yarn add ../react-utilities` (use the relative path).
+2. **Warning**: This uses symlinks. If you get a "Duplicate React" or "Invalid Hook Call" error, use Method 2.
+
+### Method 2: The Recommended Way (`yalc`)
+
+Best for active development. It avoids all symlink/React issues by copying files instead of linking them.
+
+**In this library:**
+
+1. Install yalc globally: `npm i -g yalc`
+2. Build and publish locally: `yarn build && yalc publish`
+3. (Optional) For auto-syncing: `yarn build:watch` and in another terminal `yalc publish --push`
+
+**In your other project:**
+
+1. Add the local package: `yalc add @andre1502/react-utilities`
+2. Install dependencies: `yarn install` (or npm/pnpm)
+
+### Method 3: The "Clean" Way (`npm pack`)
+
+Best for final verification before publishing.
+
+**In this library:**
+
+1. `yarn build`
+2. `npm pack` (this creates a `.tgz` file like `andre1502-react-utilities-1.0.8.tgz`)
+
+**In your other project:**
+
+1. `yarn add ./path/to/andre1502-react-utilities-1.0.8.tgz`
+
 ## 💖 Support the Project
 
 If this project saved you time or helped you build something cool, consider a one-time donation!
