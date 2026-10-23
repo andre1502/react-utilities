@@ -16,11 +16,11 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v6
         with:
-          node-version: "25"
+          node-version: "24"
           cache: "yarn"
 
       - name: Install Dependencies
-        run: yarn install --immutable --frozen-lockfile
+        run: yarn install --immutable --frozen-lockfile --ignore-engines
 
       - name: Run Tests
         run: yarn test
@@ -40,12 +40,12 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v6
         with:
-          node-version: "25"
+          node-version: "24"
           registry-url: "https://registry.npmjs.org"
           cache: "yarn"
 
       - name: Install Dependencies
-        run: yarn install --immutable --frozen-lockfile
+        run: yarn install --immutable --frozen-lockfile --ignore-engines
 
       - name: Run Build
         run: yarn build
