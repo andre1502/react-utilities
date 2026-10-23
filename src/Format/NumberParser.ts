@@ -1,5 +1,10 @@
 import { NumberFormat } from '@formatjs/intl-numberformat';
 
+const Formatter =
+  typeof Intl !== 'undefined' && Intl.NumberFormat
+    ? Intl.NumberFormat
+    : NumberFormat;
+
 class NumberParser {
   private _group: RegExp;
   private _decimal: RegExp;
@@ -7,24 +12,26 @@ class NumberParser {
   private _index: (d: any) => any;
 
   constructor(locale: string) {
-    const parts = new NumberFormat(locale).formatToParts(12345.6);
+    const parts = new Formatter(locale).formatToParts(12345.6);
 
     const numerals = [
-      ...new NumberFormat(locale, { useGrouping: false }).format(9876543210),
+      ...new Formatter(locale, { useGrouping: false }).format(9876543210),
     ].reverse();
 
     const index = new Map(numerals.map((d, i) => [d, i]));
 
-    this._group = new RegExp(
-      `[${parts.find((d) => d.type === 'group')?.value}]`,
+    const escapeRegex = (str?: string) =>
+      str ? str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') : '';
+
+    const groupPart = parts.find((d) => d.type === 'group')?.value;
+    const decimalPart = parts.find((d) => d.type === 'decimal')?.value;
+
+    this._group = groupPart ? new RegExp(escapeRegex(groupPart), 'g') : /(?!)/g;
+    this._decimal = decimalPart ? new RegExp(escapeRegex(decimalPart)) : /(?!)/;
+    this._numeral = new RegExp(
+      `[${numerals.map((n) => escapeRegex(n)).join('')}]`,
       'g',
     );
-
-    this._decimal = new RegExp(
-      `[${parts.find((d) => d.type === 'decimal')?.value}]`,
-    );
-
-    this._numeral = new RegExp(`[${numerals.join('')}]`, 'g');
     this._index = (d) => index.get(d);
   }
 

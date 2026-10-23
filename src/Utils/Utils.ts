@@ -20,9 +20,11 @@ export function parseQueryString(fullString: string): {
   const params: { [key: string]: string } = {};
 
   if (queryString) {
-    queryString.split('&').forEach((param) => {
-      const [key, value] = param.split('=');
-      params[key] = value;
+    const searchParams = new URLSearchParams(queryString);
+    searchParams.forEach((value, key) => {
+      if (key !== '__proto__' && key !== 'constructor' && key !== 'prototype') {
+        params[key] = value;
+      }
     });
   }
 
@@ -32,14 +34,28 @@ export function parseQueryString(fullString: string): {
 export const getUniquePermutations = (
   array: string[],
   length: number,
+  maxLength?: number,
 ): string[][] => {
+  if (length <= 0 || array.length === 0) return [];
+  if (
+    maxLength !== undefined &&
+    (array.length > maxLength || length > maxLength)
+  ) {
+    throw new Error(
+      `Input length exceeds maximum allowed limit (${maxLength}) for permutation calculation.`,
+    );
+  }
   if (length === 1) return array.map((item) => [item]);
 
   const permutations = new Set<string>(); // Use Set to prevent duplicates
   for (let i = 0; i < array.length; i++) {
     const current = array[i];
     const remaining = array.slice(0, i).concat(array.slice(i + 1));
-    const subPermutations = getUniquePermutations(remaining, length - 1);
+    const subPermutations = getUniquePermutations(
+      remaining,
+      length - 1,
+      maxLength,
+    );
     subPermutations.forEach((perm) => {
       permutations.add([current, ...perm].join(',')); // Join to ensure uniqueness
     });

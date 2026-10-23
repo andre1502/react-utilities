@@ -30,7 +30,7 @@ const outputToFile = (content: string, options: OutputOptions): void => {
         throw err;
       }
 
-      console.log(filePath, content);
+      console.log(`[Output] Successfully generated: ${filePath}`);
     },
   );
 };

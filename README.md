@@ -191,6 +191,11 @@ transformSitemap(hostname, urls, true, {
 
 ## Sentry
 
+### Peer Dependencies
+To use Sentry utilities, ensure you have the appropriate Sentry SDK installed in your project:
+* **Web (React):** `npm install @sentry/react` or `yarn add @sentry/react`
+* **Mobile (React Native):** `npm install @sentry/react-native` or `yarn add @sentry/react-native`
+
 ### Init Sentry for React
 
 ```js
@@ -204,6 +209,7 @@ initSentry({
   debug: false,
   release: '',
   requiredEnvForSendToSentry: ['production'],
+  sendDefaultPii: false, // Optional: defaults to false for privacy/GDPR compliance
   httpClientIntegrationOptions: {
     failedRequestStatusCodes: [[400], [402, 499], [500, 599]],
     failedRequestTargets: ['http://localhost'],
@@ -225,13 +231,17 @@ initSentry({
 ### Init Sentry for React Native
 
 ```js
-import { initSentry } from '@andre1502/react-utilities';
+import { initSentry } from '@andre1502/react-utilities/react-native';
+// OR
+import { initSentry } from '@andre1502/react-utilities/sentry-rn';
 
 initSentry({
   env: '',
   dsn: '',
   debug: false,
   requiredEnvForSendToSentry: ['production'],
+  sendDefaultPii: false, // Optional: defaults to false for privacy
+  attachScreenshot: false, // Optional: defaults to false for privacy
   httpClientIntegrationOptions: {
     failedRequestStatusCodes: [[400], [402, 499], [500, 599]],
     failedRequestTargets: ['http://localhost'],
@@ -367,6 +377,73 @@ initI18n({
 });
 ```
 
+## Utils
+
+### parseQueryString
+
+Parses a full URL or query string into a structured object with `originValue`, safely sanitized against prototype pollution (`__proto__`, `constructor`, `prototype`).
+
+```js
+import { parseQueryString } from '@andre1502/react-utilities';
+// OR
+import { parseQueryString } from '@andre1502/react-utilities/utils';
+
+const parsed = parseQueryString('https://example.com/api?user=john&token=abc=123');
+console.log(parsed.originValue); // 'https://example.com/api'
+console.log(parsed.user);        // 'john'
+console.log(parsed.token);       // 'abc=123'
+```
+
+### getUniquePermutations
+
+Calculates all unique permutations of a specified length. Includes an optional `maxLength` parameter to guard against algorithmic DoS / factorial memory spikes.
+
+```js
+import { getUniquePermutations } from '@andre1502/react-utilities';
+// OR
+import { getUniquePermutations } from '@andre1502/react-utilities/utils';
+
+// Standard permutations
+const perms = getUniquePermutations(['A', 'B', 'C'], 2);
+// Output: [['A', 'B'], ['A', 'C'], ['B', 'A'], ['B', 'C'], ['C', 'A'], ['C', 'B']]
+
+// With optional maxLength safeguard (throws Error if input length > maxLength)
+const safePerms = getUniquePermutations(['A', 'B', 'C'], 2, 5);
+```
+
+### Pagination Helpers
+
+```js
+import { getItemRow, getNextPage, getTotalPages } from '@andre1502/react-utilities/utils';
+
+// Calculate 1-based table row index: index 0 on page 2 with pageSize 10 -> row 11
+const row = getItemRow(0, 2, 10);
+
+// Calculate total pages: 25 records with pageSize 10 -> 3 pages
+const totalPages = getTotalPages(10, 25);
+
+// Calculate next page: on page 1 of 3 -> 2 (returns undefined if on last page)
+const nextPage = getNextPage(1, 10, 25);
+```
+
+## Testing
+
+This repository includes a two-layer test suite for both fast development and real-world consumer verification:
+
+```sh
+# Run all tests (unit tests + standalone consumer pack-and-test)
+yarn test
+
+# Run fast in-source unit tests with Vitest
+yarn test:unit
+
+# Run automated standalone pack-and-test integration runner
+yarn test:standalone
+```
+
+* **Unit Tests (`yarn test:unit`)**: In-source unit testing with Vitest covering `Format`, `Utils`, `Pagination`, `I18n`, and `Sentry`.
+* **Standalone Pack-and-Test (`yarn test:standalone`)**: Offline verification that builds `dist/`, creates a local tarball via `npm pack`, installs it in an isolated temporary consumer project, verifies consumer TypeScript typings (`tsc --noEmit`), and executes runtime assertions without publishing to npm or pushing to git.
+
 ## Local Testing
 
 If you want to test this library in another local project, here are the most effective ways to do it.
@@ -400,11 +477,11 @@ Best for final verification before publishing.
 **In this library:**
 
 1. `yarn build`
-2. `npm pack` (this creates a `.tgz` file like `andre1502-react-utilities-1.0.8.tgz`)
+2. `npm pack` (this creates a `.tgz` file like `andre1502-react-utilities-1.0.9.tgz`)
 
 **In your other project:**
 
-1. `yarn add ./path/to/andre1502-react-utilities-1.0.8.tgz`
+1. `yarn add ./path/to/andre1502-react-utilities-1.0.9.tgz`
 
 ## 💖 Support the Project
 

@@ -3,6 +3,11 @@ import { CurrencySymbolEnum } from '../enums/CurrencySymbolEnum';
 import { FormatOptions } from '../interfaces/Format/FormatOptions';
 import { NumberParser } from './NumberParser';
 
+const Formatter =
+  typeof Intl !== 'undefined' && Intl.NumberFormat
+    ? Intl.NumberFormat
+    : NumberFormat;
+
 const formatAccountNumber = (
   accountNumber: string,
   separator: string = ' ',
@@ -65,7 +70,7 @@ const formatNumber = (options: FormatOptions) => {
     };
   }
 
-  let localizedNumber = NumberFormat(options.lang, formatOptions)
+  let localizedNumber = new Formatter(options.lang, formatOptions)
     .format(options.value)
     .replace(/^([\d,.]+)(\s*)([A-Z]{3})$/, '$3$2$1')
     .replace(/([\d,.]+)$/, options.showValue ? ' $1' : ' ********')

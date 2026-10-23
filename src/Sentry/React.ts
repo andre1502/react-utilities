@@ -77,7 +77,7 @@ const initSentry = (options: InitOptions): void => {
     tracesSampleRate: 0.7, //  Capture 100% of the transactions
     // Set 'tracePropagationTargets' to control for which URLs distributed tracing should be enabled
     tracePropagationTargets: ['localhost'],
-    sendDefaultPii: true,
+    sendDefaultPii: options?.sendDefaultPii ?? false,
     beforeSend: (event) => {
       if (
         event?.message?.includes('antd:') ||

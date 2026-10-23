@@ -6,7 +6,28 @@ on:
       - "[0-9]+.[0-9]+.[0-9]+-release"
 
 jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: "25"
+          cache: "yarn"
+
+      - name: Install Dependencies
+        run: yarn install --immutable --frozen-lockfile
+
+      - name: Run Tests
+        run: yarn test
+
   publish:
+    name: Publish to NPM
+    needs: test
     runs-on: ubuntu-latest
     environment: Production
     permissions:

@@ -27,6 +27,20 @@ dist/
 .rollup.cache
 tsconfig.tsbuildinfo
 
+# Credentials and environment
+google_application_credentials.json
+*.credentials.json
+.env
+.env.*
+!.env.example
+
+# Local test artifacts
+*.tgz
+test-consumer/
+test-standalone-consumer/
+.test-consumer/
+.test-standalone-consumer/
+
 packages/react-devtools-core/dist
 packages/react-devtools-extensions/chrome/build
 packages/react-devtools-extensions/chrome/*.crx

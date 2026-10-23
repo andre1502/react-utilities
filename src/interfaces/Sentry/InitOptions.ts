@@ -18,6 +18,8 @@ export interface InitOptions {
   ignoreErrorsOptions?: StringRegexArr;
   httpClientIntegrationOptions?: HttpClientIntegrationOptions;
   captureConsoleIntegrationOptions?: CaptureConsoleIntegrationOptions;
+  sendDefaultPii?: boolean;
+  attachScreenshot?: boolean;
   beforeSend?: (event: any, hint: any) => any;
   options?: any;
 }

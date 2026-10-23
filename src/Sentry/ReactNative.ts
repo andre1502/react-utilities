@@ -67,7 +67,7 @@ const initSentry = (options: InitOptionsRN): void => {
     ignoreErrors: ignoreErrors,
     sampleRate: 0.7,
     maxBreadcrumbs: 50,
-    attachScreenshot: true,
+    attachScreenshot: options?.attachScreenshot ?? false,
     enableCaptureFailedRequests: true,
     tracesSampleRate: 0.7,
     enableNative: true,
@@ -81,7 +81,7 @@ const initSentry = (options: InitOptionsRN): void => {
     enableWatchdogTerminationTracking: true,
     enableAppHangTracking: true,
     appHangTimeoutInterval: 5,
-    sendDefaultPii: true,
+    sendDefaultPii: options?.sendDefaultPii ?? false,
     beforeSend: (event) => {
       if (event?.message?.includes('StallTracking') || !shouldSendToSentry) {
         return null;

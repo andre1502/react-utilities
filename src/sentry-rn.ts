@@ -1,2 +1,2 @@
-export * from './Sentry/ReactNative';
 export * from './interfaces/Sentry/InitOptionsRN';
+export * from './Sentry/ReactNative';

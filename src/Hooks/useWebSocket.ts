@@ -54,8 +54,6 @@ const useWebSocket = (): WebSocketOutput => {
       };
 
       socketRef.current.onmessage = (event: MessageEvent) => {
-        console.log('WebSocket onmessage', 'event.data', event.data);
-
         if (event.data === 'ping') {
           socketRef.current?.send('pong');
           return;
@@ -64,7 +62,7 @@ const useWebSocket = (): WebSocketOutput => {
         setTimeout(() => {
           setMessages((prev) => {
             if (!prev.includes(event.data)) {
-              prev.push(event.data);
+              return [...prev, event.data];
             }
 
             return prev;

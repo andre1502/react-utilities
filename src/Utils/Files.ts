@@ -24,10 +24,15 @@ const deleteFile = (dirPath: string, exts: string[]): void => {
   readdir(dirPath, (err, files) => {
     if (err) {
       console.error(err);
+      return;
+    }
+
+    if (!files || !Array.isArray(files)) {
+      return;
     }
 
     files.forEach((file) => {
-      const fileDir = path.join(`${dirPath}/${file}`);
+      const fileDir = path.join(dirPath, file);
       // Get the extension name of the file, lowercase it, then see if it is in the array of extensions
       // defined above. If so, remove it.
 

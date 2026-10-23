@@ -1,2 +1,2 @@
-export * from './Sentry/React';
 export * from './interfaces/Sentry/InitOptions';
+export * from './Sentry/React';

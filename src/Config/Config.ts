@@ -174,19 +174,21 @@ const contentMap = (key: string, value: any, exportAs: string): string => {
   switch (exportAs) {
     case 'ts':
       if (isNull(value)) {
-        content += `export const ${key}: string | null = ${value};\n`;
+        content += `export const ${key}: string | null = null;\n`;
       } else if (typeof value === 'boolean') {
         content += `export const ${key}: boolean = ${value};\n`;
       } else {
-        content += `export const ${key} = '${value}';\n`;
+        content += `export const ${key} = ${JSON.stringify(String(value))};\n`;
       }
       break;
     case 'js':
-      content += `export const ${key} = "${value}";\n`;
+      content += `export const ${key} = ${JSON.stringify(String(value))};\n`;
       break;
-    case 'env':
-      content += `${key} = "${value}"\n`;
+    case 'env': {
+      const sanitized = String(value).replace(/[\r\n]/g, '');
+      content += `${key}="${sanitized.replace(/"/g, '\\"')}"\n`;
       break;
+    }
     default:
       throw new Error(`exportAs ${exportAs} not supported.`);
   }
@@ -294,11 +296,11 @@ const changeEntry = (
   const newPath = 'index.html';
   let oldPath = `index`;
 
-  if (!options.excludeVersion.includes(version)) {
-    oldPath = `.${version}.`;
+  if (!options.excludeVersion?.includes(version)) {
+    oldPath = `${oldPath}.${version}`;
   }
 
-  if (!options.excludeEnv.includes(env)) {
+  if (!options.excludeEnv?.includes(env)) {
     oldPath = `${oldPath}.${env}`;
   }
 
